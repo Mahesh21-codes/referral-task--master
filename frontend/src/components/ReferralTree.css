@@ -1,0 +1,287 @@
+.referral-tree-wrapper {
+    padding: 2rem;
+    background: var(--bg-main);
+    width: 100%;
+    color: var(--text-main);
+}
+
+.tree-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.header-left h2 {
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    color: var(--text-main);
+}
+
+.viewing-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.viewing-label strong {
+    color: var(--primary);
+    margin-left: 0.5rem;
+}
+
+.reset-btn {
+    background: var(--primary-light);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-left: 1rem;
+}
+
+.reset-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Tree Main Container */
+.tree-viewport {
+    width: 100%;
+    overflow-x: auto;
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.tree-container {
+    display: inline-block;
+    padding: 0 2rem;
+}
+
+/* Nodes */
+.node-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-surface);
+    border: 2px solid var(--border-subtle);
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 2;
+}
+
+.node-username {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.node-position-label {
+    display: none; /* Removed for now, using branch-label instead */
+}
+
+.branch-label {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-surface);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    border: 2px solid var(--border-subtle);
+    z-index: 10;
+}
+
+.pos-a { color: var(--pos-a); border-color: var(--pos-a); }
+.pos-b { color: var(--pos-b); border-color: var(--pos-b); }
+.pos-c { color: var(--pos-c); border-color: var(--pos-c); }
+
+.root-circle {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    width: 90px;
+    height: 90px;
+    font-size: 0.9rem;
+}
+
+.branch-a-bg { border-color: var(--pos-a); }
+.branch-b-bg { border-color: var(--pos-b); }
+.branch-c-bg { border-color: var(--pos-c); }
+
+.node-circle.expandable:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+/* Lines */
+.line-down {
+    width: 2px;
+    height: 24px;
+    background: var(--border-subtle);
+    margin: 0 auto;
+}
+
+.tree-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    table-layout: fixed; /* Force equal column widths */
+    min-width: 600px; /* Base width to ensure horizontal bar is visible */
+}
+
+.node-td {
+    padding: 0 5px;
+    vertical-align: top;
+}
+
+.line-td {
+    padding: 0;
+    height: 24px;
+    vertical-align: bottom;
+    width: 16.66%;
+    position: relative; /* For branch-label positioning */
+}
+
+/* Specific height for the horizontal line row to avoid gaps */
+tr:has(.line-h) .line-td {
+    height: 2px;
+    vertical-align: top;
+}
+
+.child-td {
+    padding: 20px 0 0 0;
+    vertical-align: top;
+    width: 33.33%; /* 3 children, each taking 2 of the 6 cols */
+}
+
+.child-td .tree-table {
+    width: 100%;
+    min-width: unset; /* Allow nested trees to be smaller */
+}
+
+.line-h {
+    height: 2px;
+    width: 100%;
+}
+
+.line-h-full {
+    background: var(--border-subtle);
+}
+
+.line-h-empty {
+    background: transparent;
+}
+
+.line-left-full { border-right: 1px solid var(--border-subtle); }
+.line-right-full { border-left: 1px solid var(--border-subtle); }
+
+.node-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.node-circle-placeholder .plus-icon {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* UID Label */
+.node-uid {
+    margin-top: 4px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: monospace;
+    opacity: 0.8;
+}
+
+/* Placeholder */
+.node-circle-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.node-circle-placeholder:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    opacity: 1;
+    background: var(--bg-surface);
+}
+
+.plus-icon {
+    font-size: 1.5rem !important;
+    font-weight: 300;
+    line-height: 1;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .referral-tree-wrapper { padding: 1rem; }
+    
+    .tree-viewport {
+        padding: 1.5rem 0;
+        justify-content: flex-start; /* Ensure left-alignment for scrolling */
+    }
+
+    .node-circle { 
+        width: 100px; 
+        height: 100px;
+        font-size: 0.8rem;
+    }
+
+    .root-circle { 
+        width: 110px; 
+        height: 110px; 
+    }
+
+    .line-down { height: 30px; }
+    
+    .header-left h2 { font-size: 1.2rem; }
+    
+    .node-uid { font-size: 0.55rem; }
+}
+
+@media (max-width: 480px) {
+    .node-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 0.5rem;
+    }
+    
+    .root-circle {
+        width: 60px;
+        height: 60px;
+    }
+}

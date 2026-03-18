@@ -1,0 +1,61 @@
+:root {
+    /* Color Palette - Teal & Coral Professional */
+    --primary: #0d9488;       /* Teal 600 */
+    --primary-hover: #0f766e; /* Teal 700 */
+    --primary-light: rgba(13, 148, 136, 0.1);
+    
+    --accent: #fb7185;        /* Coral/Rose 400 */
+    --accent-hover: #f43f5e;  /* Rose 500 */
+    --accent-light: rgba(251, 113, 133, 0.1);
+
+    --success: #22c55e;
+    --danger: #ef4444;
+
+    /* Workspace Shades */
+    --bg-main: #0f172a;       /* Slate 950 */
+    --bg-surface: #1e293b;    /* Slate 800 */
+    --bg-card: #334155;       /* Slate 700 */
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+
+    /* Position Colors */
+    --pos-a: #2dd4bf;         /* Teal accent */
+    --pos-b: #fb7185;         /* Coral accent */
+    --pos-c: #38bdf8;         /* Sky accent */
+
+    /* SaaS Aesthetic */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+
+    /* Typography */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Instrument Sans', sans-serif;
+
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
