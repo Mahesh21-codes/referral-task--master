@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const rawBaseURL = import.meta.env.VITE_API_URL || 'https://referral-task-master-10.onrender.com';
+const baseURL = rawBaseURL.endsWith('/api') ? rawBaseURL : `${rawBaseURL.replace(/\/$/, '')}/api`;
+
 const apiClient = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'https://referral-task-master-10.onrender.com',
+    baseURL,
     headers: {
         'Content-Type': 'application/json',
     },
