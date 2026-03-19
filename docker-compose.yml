@@ -26,9 +26,11 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/referral_db?allowPublicKeyRetrieval=true&useSSL=false
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=password
+      - MYSQLHOST=autorack.proxy.rlwy.net
+      - MYSQLPORT=46431
+      - MYSQLUSER=root
+      - MYSQLPASSWORD=nKnUUyMLBGLhlpIhLfZsWHSHvjmWVvpG
+      - MYSQLDATABASE=railway
       - VITE_API_URL=http://localhost:8080/api
 
   frontend:

@@ -38,11 +38,4 @@ CREATE TABLE IF NOT EXISTS referral_relationships (
     INDEX idx_referrer (referrer_id)
 );
 
--- Global state for atomic placement tracking
-CREATE TABLE IF NOT EXISTS global_placement_state (
-    id INT PRIMARY KEY,
-    last_filled_user_id BIGINT DEFAULT NULL,
-    next_position_index INT DEFAULT 0 -- 0-8 for the A->A...C->C cycle
-);
 
-INSERT IGNORE INTO global_placement_state (id, next_position_index) VALUES (1, 0);
