@@ -56,7 +56,7 @@ const Login = () => {
                             id="password"
                             type={showPassword ? "text" : "password"}
                             className="input-field"
-                            placeholder="••••••••"
+                            placeholder="Enter the password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
