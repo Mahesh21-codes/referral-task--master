@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Menu, X } from 'lucide-react';
 import ReferralTree from '../components/ReferralTree';
-import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
 import apiClient from '../api/apiClient';
 
 const Dashboard = () => {
@@ -10,7 +10,6 @@ const Dashboard = () => {
     const [treeData, setTreeData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [viewUid, setViewUid] = useState(null);
-    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const fetchData = useCallback(async (uid) => {
         try {
@@ -45,24 +44,15 @@ const Dashboard = () => {
     );
 
     return (
-        <div className={`dashboard-layout ${sidebarOpen ? 'sidebar-open' : ''}`}>
-            <Sidebar
+        <div className="dashboard-layout">
+            <Header
                 user={user}
                 logout={logout}
                 onNavigateToSelf={handleNavigateToSelf}
-                isOpen={sidebarOpen}
-                onClose={() => setSidebarOpen(false)}
             />
 
-            {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)} />}
-
             <main className="dashboard-content">
-                <header className="content-header">
-                    <div className="header-top">
-                        <button className="mobile-toggle" onClick={() => setSidebarOpen(true)}>
-                            <Menu size={24} />
-                        </button>
-                    </div>
+                <header className="content-overview">
                     <h2 className="content-title">Welcome, {user?.username}</h2>
                     <p className="auth-subtitle">Your referral network overview</p>
                 </header>
