@@ -1,13 +1,15 @@
 :root {
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: rgba(79, 70, 229, 0.1);
   --bg-main: #f8fafc;
   --bg-surface: #ffffff;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
+  --text-main: #0f172a;
+  --text-muted: #475569;
   --border-subtle: #e2e8f0;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -20,7 +22,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-main);
@@ -33,7 +35,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at top left, #eef2ff 0%, #f8fafc 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   padding: 1.5rem;
 }
 
@@ -42,9 +44,9 @@ body {
   max-width: 420px;
   background: var(--bg-surface);
   padding: 2.5rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .auth-header {
@@ -52,24 +54,15 @@ body {
   margin-bottom: 2rem;
 }
 
-.auth-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: var(--primary);
-  color: white;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.auth-brand {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
+
 .auth-title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -0.025em;
   margin-bottom: 0.5rem;
 }
 
@@ -93,10 +86,11 @@ body {
 .input-field {
   width: 100%;
   padding: 0.75rem 1rem;
-  padding-right: 3rem; /* Space for eye icon */
+  padding-left: 2.75rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
-  background: #fdfdfd;
+  background: var(--bg-surface);
+  color: var(--text-main);
   font-size: 1rem;
   transition: var(--transition);
 }
@@ -106,6 +100,23 @@ body {
   background: var(--bg-surface);
   border-color: var(--primary);
   box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.input-group-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .password-input-wrapper {
@@ -121,7 +132,7 @@ body {
   background: none;
   border: none;
   color: var(--text-muted);
-  opacity: 0.5; /* Reduced darkness/opacity */
+  opacity: 0.5;
   cursor: pointer;
   padding: 0;
   display: flex;
@@ -150,7 +161,6 @@ body {
 
 .btn-primary:hover {
   background: var(--primary-hover);
-  transform: translateY(-1px);
 }
 
 .auth-footer {
@@ -171,14 +181,17 @@ body {
 }
 
 .error-banner {
-  background: #fef2f2;
-  border: 1px solid #fee2e2;
-  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
   padding: 0.75rem;
   border-radius: var(--radius-md);
   margin-bottom: 1.5rem;
-  font-size: 0.875rem;
   font-weight: 500;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Header Styles */
@@ -285,10 +298,6 @@ body {
   color: var(--text-muted);
 }
 
-.user-meta {
-  display: flex;
-  flex-direction: column;
-}
 
 .user-display-name {
   font-size: 0.875rem;
@@ -393,10 +402,10 @@ body {
 
 .content-card {
   background: var(--bg-surface);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-subtle);
   padding: 2rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 @media (max-width: 1024px) {

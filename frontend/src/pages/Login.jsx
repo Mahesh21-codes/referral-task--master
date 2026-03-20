@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, User, Lock } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import AuthLayout from '../components/AuthLayout';
 import apiClient from '../api/apiClient';
@@ -36,39 +36,43 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label className="form-label" htmlFor="username">Username</label>
-                    <input
-                        id="username"
-                        type="text"
-                        className="input-field"
-                        placeholder="Enter your username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
+                    <div className="input-group-wrapper">
+                        <User className="input-icon" size={18} />
+                        <input
+                            id="username"
+                            type="text"
+                            className="input-field"
+                            placeholder="Enter your username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
                 </div>
                 
                 <div className="form-group">
-                    <div className="label-row">
-                        <label className="form-label" htmlFor="password">Password</label>
-                    </div>
-                    <div className="password-input-wrapper">
-                        <input
-                            id="password"
-                            type={showPassword ? "text" : "password"}
-                            className="input-field"
-                            placeholder="Enter the password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <button
-                            type="button"
-                            className="password-toggle"
-                            onClick={() => setShowPassword(!showPassword)}
-                            aria-label={showPassword ? "Hide password" : "Show password"}
-                        >
-                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                        </button>
+                    <label className="form-label" htmlFor="password">Password</label>
+                    <div className="input-group-wrapper">
+                        <Lock className="input-icon" size={18} />
+                        <div className="password-input-wrapper">
+                            <input
+                                id="password"
+                                type={showPassword ? "text" : "password"}
+                                className="input-field"
+                                placeholder="Enter the password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="password-toggle"
+                                onClick={() => setShowPassword(!showPassword)}
+                                aria-label={showPassword ? "Hide password" : "Show password"}
+                            >
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                            </button>
+                        </div>
                     </div>
                 </div>
                 

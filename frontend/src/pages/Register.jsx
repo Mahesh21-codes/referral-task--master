@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, User, Lock, Link as LinkIcon } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import AuthLayout from '../components/AuthLayout';
 import apiClient from '../api/apiClient';
@@ -41,50 +41,59 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label className="form-label" htmlFor="reg-username">Username</label>
-                    <input
-                        id="reg-username"
-                        type="text"
-                        className="input-field"
-                        placeholder="Choose a username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
+                    <div className="input-group-wrapper">
+                        <User className="input-icon" size={18} />
+                        <input
+                            id="reg-username"
+                            type="text"
+                            className="input-field"
+                            placeholder="Choose a username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
                 </div>
                 
                 <div className="form-group">
                     <label className="form-label" htmlFor="reg-password">Password</label>
-                    <div className="password-input-wrapper">
-                        <input
-                            id="reg-password"
-                            type={showPassword ? "text" : "password"}
-                            className="input-field"
-                            placeholder="Create a password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <button
-                            type="button"
-                            className="password-toggle"
-                            onClick={() => setShowPassword(!showPassword)}
-                            aria-label={showPassword ? "Hide password" : "Show password"}
-                        >
-                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                        </button>
+                    <div className="input-group-wrapper">
+                        <Lock className="input-icon" size={18} />
+                        <div className="password-input-wrapper">
+                            <input
+                                id="reg-password"
+                                type={showPassword ? "text" : "password"}
+                                className="input-field"
+                                placeholder="Create a password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="password-toggle"
+                                onClick={() => setShowPassword(!showPassword)}
+                                aria-label={showPassword ? "Hide password" : "Show password"}
+                            >
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <div className="form-group">
                     <label className="form-label" htmlFor="referral-uid">Referral Code (Optional)</label>
-                    <input
-                        id="referral-uid"
-                        type="text"
-                        className="input-field"
-                        placeholder="Enter referral code"
-                        value={referralUid}
-                        onChange={(e) => setReferralUid(e.target.value)}
-                    />
+                    <div className="input-group-wrapper">
+                        <LinkIcon className="input-icon" size={18} />
+                        <input
+                            id="referral-uid"
+                            type="text"
+                            className="input-field"
+                            placeholder="Enter referral code"
+                            value={referralUid}
+                            onChange={(e) => setReferralUid(e.target.value)}
+                        />
+                    </div>
                 </div>
 
                 <button type="submit" className="btn-primary">

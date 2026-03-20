@@ -1,6 +1,6 @@
 .referral-tree-wrapper {
     padding: 1rem;
-    background: var(--bg-main);
+    background: #f8fafc;
     width: 100%;
     color: var(--text-main);
 }
@@ -14,10 +14,17 @@
     border-bottom: 1px solid var(--border-subtle);
 }
 
+.header-left {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+}
+
 .header-left h2 {
     font-size: 1.5rem;
-    font-family: var(--font-heading);
+    font-weight: 700;
     color: var(--text-main);
+    margin-bottom: 0;
 }
 
 .viewing-label {
@@ -27,7 +34,6 @@
 
 .viewing-label strong {
     color: var(--primary);
-    margin-left: 0.5rem;
 }
 
 .reset-btn {
@@ -35,6 +41,7 @@
     border: 1px solid var(--primary);
     color: var(--primary);
     padding: 0.4rem 1rem;
+    margin-left: 1.25rem;
     border-radius: var(--radius-md);
     font-size: 0.8rem;
     font-weight: 700;
@@ -66,7 +73,7 @@
 .node-circle {
     width: 80px;
     height: 80px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +85,7 @@
     font-size: 0.9rem;
     padding: 0.5rem;
     transition: var(--transition);
-    box-shadow: var(--shadow-md);
+    box-shadow: none;
     position: relative;
     z-index: 2;
 }
@@ -114,13 +121,12 @@
     z-index: 10;
 }
 
-.pos-a { color: var(--pos-a); border-color: var(--pos-a); }
-.pos-b { color: var(--pos-b); border-color: var(--pos-b); }
-.pos-c { color: var(--pos-c); border-color: var(--pos-c); }
+.pos-a, .pos-b, .pos-c { color: #0f172a; border-color: #0f172a; }
 
 .root-circle {
     border-color: var(--primary);
     background: var(--primary-light);
+    color: var(--primary);
     width: 90px;
     height: 90px;
     font-size: 0.9rem;
@@ -131,8 +137,6 @@
 .branch-c-bg { border-color: var(--pos-c); }
 
 .node-circle.expandable:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
     border-color: var(--primary);
 }
 
@@ -222,7 +226,7 @@ tr:has(.line-h) .line-td {
 .node-circle-placeholder {
     width: 80px;
     height: 80px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     border: 2px dashed var(--border-subtle);
     display: flex;
     align-items: center;

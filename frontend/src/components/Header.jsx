@@ -36,9 +36,7 @@ const Header = ({ user, logout, onNavigateToSelf }) => {
                         <div className="user-avatar">
                             {user?.username?.[0].toUpperCase()}
                         </div>
-                        <div className="user-meta">
-                            <span className="user-display-name">{user?.username}</span>
-                        </div>
+                        <span className="user-display-name">{user?.username}</span>
                     </div>
                     <button className="header-logout-btn" onClick={logout} title="Logout">
                         <LogOut size={20} />
