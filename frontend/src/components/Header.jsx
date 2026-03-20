@@ -38,7 +38,6 @@ const Header = ({ user, logout, onNavigateToSelf }) => {
                         </div>
                         <div className="user-meta">
                             <span className="user-display-name">{user?.username}</span>
-                            <span className="user-plan">Free Plan</span>
                         </div>
                     </div>
                     <button className="header-logout-btn" onClick={logout} title="Logout">
