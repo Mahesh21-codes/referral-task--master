@@ -86,7 +86,10 @@ public class AuthService {
                     throw new RuntimeException("Failed to save referral relationship");
             }
         } else {
-            // First user/Root
+            // First user/Root - check if exists
+            if (treePositionRepository.findFirstByLevelOrderByCreatedAtAsc(0).isPresent()) {
+                throw new RuntimeException("A root user already exists. Use a referral UID to register.");
+            }
             TreePosition rootPos = TreePosition.builder()
                     .user(user)
                     .level(0)

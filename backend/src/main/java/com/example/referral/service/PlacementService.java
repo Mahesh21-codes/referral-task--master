@@ -30,7 +30,8 @@ public class PlacementService {
     @Transactional
     public TreePosition findNextPlacement() {
         // Always start from the global root
-        TreePosition rootPos = treePositionRepository.findByLevel(0)
+        // Use findFirstByLevelOrderByCreatedAtAsc to be robust against accidental duplicates
+        TreePosition rootPos = treePositionRepository.findFirstByLevelOrderByCreatedAtAsc(0)
                 .orElseThrow(() -> new RuntimeException("No root user found. Register a root user first."));
         User rootUser = rootPos.getUser();
 

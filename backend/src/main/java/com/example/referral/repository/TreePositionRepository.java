@@ -14,4 +14,6 @@ public interface TreePositionRepository extends JpaRepository<TreePosition, Long
     Optional<TreePosition> findByParentIdAndPositionName(Long parentId, String positionName);
 
     Optional<TreePosition> findByLevel(Integer level);
+    
+    Optional<TreePosition> findFirstByLevelOrderByCreatedAtAsc(Integer level);
 }
